@@ -13,3 +13,9 @@ build/
 
 # macOS files
 .DS_Store
+
+# Prisma Migration Lock
+migration_lock.toml
+
+# Enviorment Variables
+.env
