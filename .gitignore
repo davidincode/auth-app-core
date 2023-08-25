@@ -1,0 +1,15 @@
+# Node.js
+node_modules/
+
+# TypeScript build output
+build/
+
+# TypeScript declaration files
+*.d.ts
+
+# IDE-specific files
+.vscode/
+.idea/
+
+# macOS files
+.DS_Store
