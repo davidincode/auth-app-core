@@ -1,18 +1,19 @@
 import CustomError from './customError'
+import { ZodIssue } from 'zod'
 
-class ValidationError extends CustomError {
+export class ZodValidationError extends CustomError {
   code = 400
-  type = 'ValidationError'
+  type = 'ZodValidationError'
 
-  constructor (message: string, private readonly property?: string) {
+  constructor (message: string, private readonly zodIssue: ZodIssue[]) {
     super(message)
 
-    Object.setPrototypeOf(this, ValidationError.prototype)
+    Object.setPrototypeOf(this, ZodValidationError.prototype)
   }
 
-  serializeError (): Array<{ message: string, property?: string }> {
-    return [{ message: this.message, property: this.property }]
+  serializeError (): Array<{ message: string, property?: string | number }> {
+    return this.zodIssue.map((issue) => {
+      return { message: issue.message, property: issue.path[0] }
+    })
   }
 }
-
-export default ValidationError
