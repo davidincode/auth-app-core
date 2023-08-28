@@ -14,8 +14,8 @@ const errorConfig: ErrorMessageOptions = {
 }
 const schemeValidator =
   (scheme: AnyZodObject) =>
-    (req: Request, _res: Response, next: NextFunction) => {
-      const validatedScheme = scheme.safeParse(req.body)
+    async (req: Request, _res: Response, next: NextFunction) => {
+      const validatedScheme = await scheme.safeParseAsync(req.body)
 
       if (!validatedScheme.success) {
         const errorMessage = generateErrorMessage(
