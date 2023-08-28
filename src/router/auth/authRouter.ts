@@ -1,6 +1,7 @@
 import { Router } from 'express'
 
 import schemeValidator from '../../middleware/schemeValidator'
+import hashPassword from '../../middleware/hashPassword'
 import { signupSchema } from '../../schema/authSchema'
 
 import authController from '../../controller/auth/authController'
@@ -9,6 +10,7 @@ const authRouter = Router()
 
 authRouter.post('/register',
   schemeValidator(signupSchema),
+  hashPassword,
   authController.registerUserLocally
 )
 
