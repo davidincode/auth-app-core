@@ -15,6 +15,7 @@
     "bcrypt": "5.1.1",
     "express": "4.18.2",
     "express-async-errors": "3.1.1",
+    "module-alias": "2.2.3",
     "zod": "3.22.2",
     "zod-error": "1.5.0"
   },
@@ -25,6 +26,7 @@
     "@types/morgan": "1.9.5",
     "@types/node": "20.5.6",
     "cors": "2.8.5",
+    "eslint-import-resolver-typescript": "3.6.0",
     "morgan": "1.10.0",
     "prisma": "5.2.0",
     "ts-node-dev": "2.0.0",
@@ -41,5 +43,13 @@
     "extends": [
       "./node_modules/ts-standard/eslintrc.json"
     ]
+  },
+  "_moduleAliases": {
+    "@controller": "build/controller",
+    "@middleware": "build/middleware",
+    "@xprisma": "build/prisma",
+    "@router": "build/router",
+    "@schema": "build/schema",
+    "@error": "build/error"
   }
 }

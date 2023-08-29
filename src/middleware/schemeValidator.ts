@@ -3,7 +3,7 @@ import { Request, Response, NextFunction } from 'express'
 import { AnyZodObject } from 'zod'
 import { generateErrorMessage, ErrorMessageOptions } from 'zod-error'
 
-import { ZodValidationError } from '../error/validationError'
+import { ZodValidationError } from '@error/validationError'
 
 const errorConfig: ErrorMessageOptions = {
   delimiter: {

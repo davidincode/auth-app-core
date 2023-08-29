@@ -1,7 +1,6 @@
-import { SignupData } from '../../schema/authSchema'
-import { prisma, User } from '../'
-
-import { ConflictError } from '../../error/conflictError'
+import { prisma, User } from '@xprisma/index'
+import { SignupData } from '@schema/authSchema'
+import { ConflictError } from '@error/conflictError'
 
 const signUpExtension = {
   model: {

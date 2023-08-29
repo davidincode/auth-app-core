@@ -1,4 +1,5 @@
 import express from 'express'
+import 'module-alias/register'
 import 'express-async-errors'
 
 import cors from 'cors'

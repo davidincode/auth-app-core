@@ -1,10 +1,9 @@
 import { Router } from 'express'
 
-import schemeValidator from '../../middleware/schemeValidator'
-import hashPassword from '../../middleware/hashPassword'
-import { signupSchema } from '../../schema/authSchema'
+import authController from '@controller/authController'
 
-import authController from '../../controller/auth/authController'
+import { schemeValidator, hashPassword } from '@middleware/index'
+import { signupSchema } from '@schema/authSchema'
 
 const authRouter = Router()
 

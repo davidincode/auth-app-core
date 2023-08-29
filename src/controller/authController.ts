@@ -1,6 +1,6 @@
 
 import { Request, Response } from 'express'
-import { xprisma } from '../../prisma'
+import { xprisma } from '@xprisma/index'
 
 const registerUserLocally = async (req: Request, res: Response): Promise<void> => {
   const createdUser = await xprisma.user.signUp({ ...req.body })
