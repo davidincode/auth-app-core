@@ -112,7 +112,8 @@
       "@schema/*": ["schema/*"],
       "@xprisma/*": ["prisma/*"],
       "@router/*": ["router/*"],
-      "@error/*": ["error/*"]
+      "@error/*": ["error/*"],
+      "@util/*": ["util/*"]
     } 
   }
 }
