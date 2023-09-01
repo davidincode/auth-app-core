@@ -22,13 +22,12 @@ model User {
 }
 
 model AuthToken {
-  id         String        @id @default(uuid())
-  token      String        @db.Text
-  type       AuthTokenType
-  expiration DateTime
-  userId     String
-  user       User          @relation(fields: [userId], references: [id])
-  createdAt  DateTime      @default(now())
+  id        String        @id @default(uuid())
+  token     String        @db.Text
+  type      AuthTokenType
+  userId    String
+  user      User          @relation(fields: [userId], references: [id])
+  createdAt DateTime      @default(now())
 }
 
 enum AuthTokenType {
