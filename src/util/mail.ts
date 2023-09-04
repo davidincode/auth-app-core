@@ -16,14 +16,14 @@ export const sendMail = async (
 }
 
 export const sendVerificationMail = async (
-  { id, name, mail, validationToken }: { id: string, name: string, mail: string, validationToken: string }
-): Promise<{ code: number }> => {
-  if (BASE_URL === undefined) return { code: 503 }
+  { id, name, email, validationToken }: { id: string, name: string, email: string, validationToken: string }
+): Promise<{ emailSent: boolean }> => {
+  if (BASE_URL === undefined) return { emailSent: false }
   const verificationUrl = `${BASE_URL}/user/${id}/verify/${validationToken}`
   await sendMail({
-    to: [mail],
+    to: [email],
     subject: 'Email Address Verification',
     html: generateConfirmMailTemplate({ name, verificationUrl })
   })
-  return { code: 503 }
+  return { emailSent: true }
 }

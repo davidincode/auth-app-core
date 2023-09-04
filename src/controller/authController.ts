@@ -2,13 +2,20 @@
 import { Request, Response } from 'express'
 import { xprisma } from '@xprisma/index'
 import { generateUserToken, tokenLifetimeInSeconds } from '@util/jwt'
+import { sendVerificationMail } from '@util/mail'
 
 const registerUserLocally = async (req: Request, res: Response): Promise<void> => {
   const createdUser = await xprisma.user.signUp({ ...req.body })
-  const [sessionToken, verificationToken] = generateUserToken(createdUser.id)
+  const [sessionToken, validationToken] = generateUserToken(createdUser.id)
+  const { emailSent } = await sendVerificationMail({
+    id: createdUser.id,
+    name: createdUser.name,
+    email: createdUser.email,
+    validationToken
+  })
 
   res.cookie('session', sessionToken, { httpOnly: true, maxAge: tokenLifetimeInSeconds * 1000 })
-  res.status(201).json({ user: createdUser })
+  res.status(201).json({ user: createdUser, emailSent })
 }
 
 const loginUserLocally = async (req: Request, res: Response): Promise<void> => {
