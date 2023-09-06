@@ -6,8 +6,8 @@ const verifyEmailExtension = {
   model: {
     user: {
       async verifyEmail ({ userId, validationToken }: { userId: string, validationToken: string }): Promise<User> {
-        const userToken = await prisma.authToken.findFirst({
-          where: { userId, token: validationToken }
+        const userToken = await prisma.authToken.findUnique({
+          where: { token: validationToken }
         })
 
         if (userToken !== null) {
