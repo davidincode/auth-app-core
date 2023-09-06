@@ -2,7 +2,7 @@ import { prisma, User } from '@xprisma/index'
 import { ConflictError } from '@error/conflictError'
 import { verifyToken } from '@util/jwt'
 
-const signInExtension = {
+const verifyEmailExtension = {
   model: {
     user: {
       async signIn ({ userId, validationToken }: { userId: string, validationToken: string }): Promise<User> {
@@ -29,4 +29,4 @@ const signInExtension = {
   }
 }
 
-export default signInExtension
+export default verifyEmailExtension
