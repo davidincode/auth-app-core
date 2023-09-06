@@ -7,10 +7,6 @@ import { signupSchema, signinSchema } from '@schema/authSchema'
 
 const authRouter = Router()
 
-authRouter.get('/:userId/verify/:validationToken',
-  authController.verifyUserEmail
-)
-
 authRouter.post('/register',
   schemeValidator(signupSchema),
   hashPassword,

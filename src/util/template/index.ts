@@ -136,13 +136,13 @@ export const generateConfirmMailTemplate = (
                     <td align="center" valign="top" style="padding:0;Margin:0;width:520px">
                      <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                        <tr>
-                        <td align="center" style="padding:0;Margin:0"><!--[if mso]><a href="" target="_blank" hidden>
-    <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" esdevVmlButton href="" 
+                        <td align="center" style="padding:0;Margin:0"><!--[if mso]><a href="${verificationUrl}" target="_blank" hidden>
+    <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" esdevVmlButton href="${verificationUrl}" 
                   style="height:51px; v-text-anchor:middle; width:520px" arcsize="50%" stroke="f"  fillcolor="#d60e4a">
       <w:anchorlock></w:anchorlock>
       <center style='color:#ffffff; font-family:"lucida sans unicode", "lucida grande", sans-serif; font-size:18px; font-weight:700; line-height:18px;  mso-text-raise:1px'>Confirm Mail</center>
     </v:roundrect></a>
-  <![endif]--><!--[if !mso]--><!-- --><span class="es-button-border msohide" style="border-style:solid;border-color:#2CB543;background:#D60E4A;border-width:0px;display:block;border-radius:30px;width:auto;mso-hide:all;mso-border-alt:10px"><a href=${verificationUrl} class="es-button msohide" target="_blank" style="mso-style-priority:100 !important;text-decoration:none !important;mso-line-height-rule:exactly;color:#FFFFFF;font-size:18px;padding:15px 20px 15px 20px;display:block;background:#D60E4A;border-radius:30px;font-family:'lucida sans unicode', 'lucida grande', sans-serif;font-weight:bold;font-style:normal;line-height:22px !important;width:auto;text-align:center;letter-spacing:0;mso-padding-alt:0;mso-border-alt:10px solid #D60E4A;mso-hide:all;padding-left:5px;padding-right:5px;border-color:#7630f3">Confirm Mail</a></span><!--<![endif]--></td>
+  <![endif]--><!--[if !mso]--><!-- --><span class="es-button-border msohide" style="border-style:solid;border-color:#2CB543;background:#D60E4A;border-width:0px;display:block;border-radius:30px;width:auto;mso-hide:all;mso-border-alt:10px"><a href="${verificationUrl}" class="es-button msohide" target="_blank" style="mso-style-priority:100 !important;text-decoration:none !important;mso-line-height-rule:exactly;color:#FFFFFF;font-size:18px;padding:15px 20px 15px 20px;display:block;background:#D60E4A;border-radius:30px;font-family:'lucida sans unicode', 'lucida grande', sans-serif;font-weight:bold;font-style:normal;line-height:22px !important;width:auto;text-align:center;letter-spacing:0;mso-padding-alt:0;mso-border-alt:10px solid #D60E4A;mso-hide:all;padding-left:5px;padding-right:5px;border-color:#7630f3">Confirm Mail</a></span><!--<![endif]--></td>
                        </tr>
                      </table></td>
                    </tr>

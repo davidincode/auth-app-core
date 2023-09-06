@@ -20,6 +20,7 @@ export const sendVerificationMail = async (
 ): Promise<{ emailSent: boolean }> => {
   if (BASE_URL === undefined) return { emailSent: false }
   const verificationUrl = `${BASE_URL}/user/${id}/verify/${validationToken}`
+  console.log(verificationUrl)
   await sendMail({
     to: [email],
     subject: 'Email Address Verification',
