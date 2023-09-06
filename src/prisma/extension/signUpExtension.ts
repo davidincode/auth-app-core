@@ -18,11 +18,20 @@ const signUpExtension = {
           { data: { name, email, password } }
         )
         const [sessionToken, validationToken] = generateUserTokenTuple(createdUser.id)
+
+        const validationEmailToken = await prisma.authToken.create({
+          data: {
+            type: 'emailValidation',
+            token: validationToken,
+            userId: createdUser.id
+          }
+        })
+
         const { emailSent } = await sendVerificationMail({
           id: createdUser.id,
           name: createdUser.name,
           email: createdUser.email,
-          validationToken
+          validationToken: validationEmailToken.token
         })
         return { createdUser, emailSent, sessionToken }
       }
