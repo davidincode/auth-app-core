@@ -5,7 +5,7 @@ import { verifyToken } from '@util/jwt'
 const verifyEmailExtension = {
   model: {
     user: {
-      async signIn ({ userId, validationToken }: { userId: string, validationToken: string }): Promise<User> {
+      async verifyEmail ({ userId, validationToken }: { userId: string, validationToken: string }): Promise<User> {
         const userToken = await prisma.authToken.findFirst({
           where: { userId, token: validationToken }
         })
