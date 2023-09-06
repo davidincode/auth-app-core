@@ -10,7 +10,7 @@ userRouter.put('/profile', (_req, _res) => {})
 userRouter.post('/reset-password/request', (_req, _res) => {})
 userRouter.post('/reset-password/confirm', (_req, _res) => {})
 userRouter.get('/:userId/verify/:validationToken',
-  userController.verifyUserEmail
+  userController.verifyEmail
 )
 
 export default userRouter
