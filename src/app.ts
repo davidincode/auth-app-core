@@ -10,10 +10,13 @@ import morgan from 'morgan'
 import appRouter from './router'
 import globalErrorHandler from './middleware/globalErrorHandler'
 
+import dotenv from 'dotenv'
+dotenv.config()
+
 const app = express()
 
 app.use(morgan('dev'))
-app.use(cors())
+app.use(cors({ origin: process.env.ORIGIN_URL, credentials: true }))
 app.use(express.json())
 app.use(cookieParser())
 

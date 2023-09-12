@@ -13,6 +13,8 @@ const registerUserLocally = async (
   res.cookie('session', sessionToken, {
     httpOnly: true,
     maxAge: tokenLifetimeInSeconds * 1000,
+    secure: false,
+    sameSite: 'none',
   })
   res.status(201).json({ user: createdUser, emailSent })
 }
@@ -25,6 +27,7 @@ const loginUserLocally = async (req: Request, res: Response): Promise<void> => {
   res.cookie('session', sessionToken, {
     httpOnly: true,
     maxAge: tokenLifetimeInSeconds * 1000,
+    sameSite: 'none',
   })
   res.status(200).json({ user: authenticatedUser })
 }
