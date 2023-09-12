@@ -1,6 +1,10 @@
-export const generateConfirmMailTemplate = (
-  { name, verificationUrl }: { name: string, verificationUrl: string }
-): string => {
+export const generateConfirmMailTemplate = ({
+  name,
+  verificationUrl,
+}: {
+  name: string
+  verificationUrl: string
+}): string => {
   return `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
   <html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office">
    <head>
@@ -116,7 +120,10 @@ export const generateConfirmMailTemplate = (
                     <td align="center" valign="top" style="padding:0;Margin:0;width:520px">
                      <table cellpadding="0" cellspacing="0" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:10px;background-color:#fafafa" bgcolor="#fafafa" role="presentation">
                        <tr>
-                        <td align="left" style="padding:20px;Margin:0"><h3 style="Margin:0;font-family:Imprima, Arial, sans-serif;mso-line-height-rule:exactly;letter-spacing:0;font-size:28px;font-style:normal;font-weight:bold;line-height:34px;color:#2D3142">Welcome,&nbsp;${name.charAt(0).toUpperCase() + name.slice(1).toLowerCase()}</h3><p style="Margin:0;mso-line-height-rule:exactly;font-family:Imprima, Arial, sans-serif;line-height:27px;letter-spacing:0;color:#2D3142;font-size:18px"><br></p><p style="Margin:0;mso-line-height-rule:exactly;font-family:Imprima, Arial, sans-serif;line-height:27px;letter-spacing:0;color:#2D3142;font-size:18px">You're receiving this message because you recently signed up for a account.<br><br>Confirm your email address by clicking the button below. This step adds extra security to your account by verifying you own this email.</p></td>
+                        <td align="left" style="padding:20px;Margin:0"><h3 style="Margin:0;font-family:Imprima, Arial, sans-serif;mso-line-height-rule:exactly;letter-spacing:0;font-size:28px;font-style:normal;font-weight:bold;line-height:34px;color:#2D3142">Welcome,&nbsp;${
+                          name.charAt(0).toUpperCase() +
+                          name.slice(1).toLowerCase()
+                        }</h3><p style="Margin:0;mso-line-height-rule:exactly;font-family:Imprima, Arial, sans-serif;line-height:27px;letter-spacing:0;color:#2D3142;font-size:18px"><br></p><p style="Margin:0;mso-line-height-rule:exactly;font-family:Imprima, Arial, sans-serif;line-height:27px;letter-spacing:0;color:#2D3142;font-size:18px">You're receiving this message because you recently signed up for a account.<br><br>Confirm your email address by clicking the button below. This step adds extra security to your account by verifying you own this email.</p></td>
                        </tr>
                      </table></td>
                    </tr>

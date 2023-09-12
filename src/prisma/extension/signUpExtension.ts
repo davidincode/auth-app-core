@@ -7,36 +7,46 @@ import { sendVerificationMail } from '@util/mail'
 const signUpExtension = {
   model: {
     user: {
-      async signUp ({ name, email, password }: SignupData): Promise<{ createdUser: User, emailSent: boolean, sessionToken: string }> {
+      async signUp({
+        name,
+        email,
+        password,
+      }: SignupData): Promise<{
+        createdUser: User
+        emailSent: boolean
+        sessionToken: string
+      }> {
         const existingUser = await prisma.user.findUnique({ where: { email } })
 
         if (existingUser !== null) {
           throw new ConflictError('User is already registered')
         }
 
-        const createdUser = await prisma.user.create(
-          { data: { name, email, password } }
+        const createdUser = await prisma.user.create({
+          data: { name, email, password },
+        })
+        const [sessionToken, validationToken] = generateUserTokenTuple(
+          createdUser.id,
         )
-        const [sessionToken, validationToken] = generateUserTokenTuple(createdUser.id)
 
         const validationEmailToken = await prisma.authToken.create({
           data: {
             type: 'emailValidation',
             token: validationToken,
-            userId: createdUser.id
-          }
+            userId: createdUser.id,
+          },
         })
 
         const { emailSent } = await sendVerificationMail({
           id: createdUser.id,
           name: createdUser.name,
           email: createdUser.email,
-          validationToken: validationEmailToken.token
+          validationToken: validationEmailToken.token,
         })
         return { createdUser, emailSent, sessionToken }
-      }
-    }
-  }
+      },
+    },
+  },
 }
 
 export default signUpExtension

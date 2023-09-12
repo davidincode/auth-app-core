@@ -5,9 +5,15 @@ import { verifyToken } from '@util/jwt'
 const verifyEmailExtension = {
   model: {
     user: {
-      async verifyEmail ({ userId, validationToken }: { userId: string, validationToken: string }): Promise<User> {
+      async verifyEmail({
+        userId,
+        validationToken,
+      }: {
+        userId: string
+        validationToken: string
+      }): Promise<User> {
         const userToken = await prisma.authToken.findUnique({
-          where: { token: validationToken }
+          where: { token: validationToken },
         })
 
         if (userToken !== null) {
@@ -16,7 +22,7 @@ const verifyEmailExtension = {
           if (validToken) {
             const updatedUser = await prisma.user.update({
               where: { id: userId },
-              data: { emailVerified: true }
+              data: { emailVerified: true },
             })
             return updatedUser
           }
@@ -24,9 +30,9 @@ const verifyEmailExtension = {
           throw new ConflictError('Token has expired')
         }
         throw new ConflictError('Token or user ID is invalid')
-      }
-    }
-  }
+      },
+    },
+  },
 }
 
 export default verifyEmailExtension

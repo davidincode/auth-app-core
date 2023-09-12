@@ -7,11 +7,22 @@ import { generateUserTokenTuple } from '@util/jwt'
 const signInExtension = {
   model: {
     user: {
-      async signIn ({ email, password }: SigninData): Promise<{ authenticatedUser: User, sessionToken: string }> {
-        const registeredUser = await prisma.user.findUnique({ where: { email } })
+      async signIn({
+        email,
+        password,
+      }: SigninData): Promise<{
+        authenticatedUser: User
+        sessionToken: string
+      }> {
+        const registeredUser = await prisma.user.findUnique({
+          where: { email },
+        })
 
         if (registeredUser !== null) {
-          const authenticated = await bcrypt.compare(password, registeredUser.password)
+          const authenticated = await bcrypt.compare(
+            password,
+            registeredUser.password,
+          )
 
           if (authenticated) {
             const [sessionToken] = generateUserTokenTuple(registeredUser.id)
@@ -20,9 +31,9 @@ const signInExtension = {
           throw new UnauthorizedError('Incorrect password')
         }
         throw new UnauthorizedError('This user is not registered')
-      }
-    }
-  }
+      },
+    },
+  },
 }
 
 export default signInExtension

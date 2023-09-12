@@ -7,15 +7,17 @@ import { signupSchema, signinSchema } from '@schema/authSchema'
 
 const authRouter = Router()
 
-authRouter.post('/register',
+authRouter.post(
+  '/register',
   schemeValidator(signupSchema),
   hashPassword,
-  authController.registerUserLocally
+  authController.registerUserLocally,
 )
 
-authRouter.post('/login',
+authRouter.post(
+  '/login',
   schemeValidator(signinSchema),
-  authController.loginUserLocally
+  authController.loginUserLocally,
 )
 
 authRouter.post('/logout', (_req, _res) => {})
