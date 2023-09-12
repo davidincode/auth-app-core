@@ -1,5 +1,5 @@
 -- CreateEnum
-CREATE TYPE "AuthTokenType" AS ENUM ('authentication', 'passwordReset');
+CREATE TYPE "AuthTokenType" AS ENUM ('authentication', 'passwordReset', 'emailValidation');
 
 -- CreateTable
 CREATE TABLE "User" (
@@ -19,14 +19,12 @@ CREATE TABLE "User" (
 
 -- CreateTable
 CREATE TABLE "AuthToken" (
-    "id" TEXT NOT NULL,
     "token" TEXT NOT NULL,
     "type" "AuthTokenType" NOT NULL,
-    "expiration" TIMESTAMP(3) NOT NULL,
     "userId" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-    CONSTRAINT "AuthToken_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "AuthToken_pkey" PRIMARY KEY ("token")
 );
 
 -- CreateIndex
